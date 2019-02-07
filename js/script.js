@@ -84,4 +84,34 @@ function setClock(id,endtime) {
     }
 }
 setClock('timer', deadline);
+
+//Модальное окно
+let more = document.querySelector('.more'),
+    overlay = document.querySelector('.overlay'),
+    close = document.querySelector('.popup-close');
+more.addEventListener('click', function() {
+    overlay.style.display = 'block';
+    this.classList.add('more-splash');
+    //Запрет прокрутки страницы при открытом модальном окне
+    document.body.style.overflow = 'hidden';
+});
+
+close.addEventListener('click', function() {
+    overlay.style.display = 'none';
+    this.classList.remove('more-splash');
+    //Отмена запрета
+    document.body.style.overflow = '';
+});
+
+//Позвоночник[0], Антистресс[1], Природа[2], Йога[3] Узнать подробнее 
+let moreSpine = document.querySelectorAll('.description-btn');
+for (let i=0; i < moreSpine.length; i++) {
+    moreSpine[i].addEventListener('click', function(){
+        overlay.style.display = 'block';
+        this.classList.add('more-splash');
+//Запрет прокрутки страницы при открытом модальном окне
+        document.body.style.overflow = 'hidden';
+    });
+};
+
 });
